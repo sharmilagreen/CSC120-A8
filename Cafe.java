@@ -15,6 +15,29 @@ public class Cafe extends Building implements CafeRequirements{
         nCups = 1000;
     }
 
+    public Cafe(String name, String address){
+        super(name, address, 1);
+        System.out.println("You have built a cafe: ☕");
+        nCoffeeOunces = 1000;
+        nSugarPackets = 1000;
+        nCreams = 1000;
+        nCups = 1000;
+    }
+
+    @Override
+    public void showOptions() {
+        super.showOptions();
+        System.out.println(" + sellCoffee()");
+        System.out.println(" + restock()");
+    }
+
+    public void sellCoffee(int number, int size, int nSugarPackets, int nCreams){
+        nCoffeeOunces -= size*number;
+        this.nSugarPackets -= nSugarPackets*number;
+        this.nCreams -= nCreams*number;
+        nCups -= number;
+    }
+
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
         nCoffeeOunces -= size;
         this.nSugarPackets -= nSugarPackets;

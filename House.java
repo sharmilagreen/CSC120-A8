@@ -6,13 +6,47 @@ public class House extends Building implements HouseRequirements{
 
   private ArrayList<Student> residents; // The <Student> tells Java what kind of data we plan to store IN the ArrayList
   private boolean hasDiningRoom;
+  private boolean hasElevator;
 
-  public House(boolean hasDiningRoom, String name, String address, int nFloors){
+  public House(boolean hasDiningRoom, String name, String address, int nFloors, boolean hasElevator){
     super(name, address, nFloors);
+    this.hasElevator = hasElevator;
     this.hasDiningRoom = hasDiningRoom;
     residents = new ArrayList<>();
     System.out.println("You have built a house: 🏠");
   }
+
+  public House(String name, String address, int nFloors){
+    super(name, address, nFloors);
+    this.hasElevator = false;
+    this.hasDiningRoom = false;
+    residents = new ArrayList<>();
+    System.out.println("You have built a house: 🏠");
+  }
+
+  public House(String name, String address){
+    super(name, address, 3);
+    this.hasElevator = false;
+    this.hasDiningRoom = false;
+    residents = new ArrayList<>();
+    System.out.println("You have built a house: 🏠");
+  }
+  
+  @Override
+  public void showOptions() {
+    super.showOptions();
+    System.out.println(" + lockDoors()");
+    System.out.println(" + unlockDoors()");
+  }
+
+  @Override
+  public void goToFloor(int floorNum) {
+      if (!hasElevator) {
+          System.out.println("This library doesn't have an elevator. Use goUp() or goDown().");
+          return;
+      }
+      super.goToFloor(floorNum);
+   }
 
   public void moveIn(Student s){
     residents.add(s);
@@ -41,7 +75,7 @@ public class House extends Building implements HouseRequirements{
   }
 
   public static void main(String[] args) {
-    new House(true, "YourMom", "YourMom St", 3);
+    new House(true, "YourMom", "YourMom St", 3, false);
   }
 
 }
