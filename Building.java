@@ -10,18 +10,30 @@ public class Building {
         this("<Name Unknown>", "<Address Unknown>", 1);
     }
 
-    /* Overloaded constructor with address only */
+    /** Overloaded constructor with address only 
+    * @param address the building's address
+    */
     public Building(String address) {
         this(); // Call default constructor
         this.address = address; // Override address
     }
 
-    /* Overloaded constructor with name, address */
+    /**
+     *  Overloaded constructor with name, address 
+     * @param address the building's address
+     * @param name the building's name
+     */
     public Building(String name, String address) {
         this(name, address, 1); // Call full constructor with hard-coded # floors
     }
 
-    /* Full constructor */
+    /**
+     * Constructs a new Building with a specified name, address, and number of Floors
+     *
+     * @param name The name of the building
+     * @param address the address of the building
+     * @param nFloors the number of floors the building has, which throws an exception if less than 1
+     */
     public Building(String name, String address, int nFloors) {
         if (name != null) { this.name = name; }
         if (address != null) { this.address = address; } 
@@ -31,15 +43,29 @@ public class Building {
         this.nFloors = nFloors;
     }
 
-    /* Accessors */
+    /**
+     * Gets the name of the building
+     *
+     * @return the building's name
+     */   
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Gets the address of the building
+     *
+     * @return the building's address
+     */         
     public String getAddress() {
         return this.address;
     }
 
+    /**
+     * Gets the number of floors of the building
+     *
+     * @return the building's number of floors
+     */     
     public int getFloors() {
         return this.nFloors;
     }
